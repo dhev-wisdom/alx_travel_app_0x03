@@ -29,9 +29,7 @@ class BookingViewSet(ModelViewSet):
         booking = serializer.save()
 
         booking_details = f"Booking ID: {booking.booking_id}\nDate: {booking.created_at}\nBooked by: {booking.booked_by}"
-        print("Booking details: ", booking_details)
-        print("Booker: ", booking.booked_by.email)
-        print("Email Host Password: ", settings.EMAIL_HOST_PASSWORD)
+        
         send_booking_confirmation_email.delay(user_email=booking.booked_by.email, booking_details=booking_details)
 
         return booking
