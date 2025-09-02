@@ -32,9 +32,9 @@ CHAPA_SECRET_KEY = env('CHAPA_SECRET_KEY')
 CHAPA_BASE_URL = env('CHAPA_BASE_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -108,7 +108,7 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        default='postgresql://postgres:postgres@localhost:5432/alx_travel_app',
         conn_max_age=600
     )
 }

@@ -1,20 +1,20 @@
 databases:
-  - name: mysitedb
+  - name: alx_travel_app_db
     plan: free
-    databaseName: mysite
-    user: mysite
+    databaseName: alx_travel_app
+    user: alx_travel_app
 
 services:
   - type: web
     plan: free
-    name: mysite
+    name: alx-travel-app
     runtime: python
     buildCommand: './build.sh'
     startCommand: 'python -m gunicorn alx_travel_app.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysitedb
+          name: alx_travel_app_db
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
