@@ -15,6 +15,7 @@ def create_admin(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('listings', '0003_payment_payer_email_payment_payer_phone'),
         ('auth', '0012_alter_user_first_name_max_length'),  # depends on your Django version
     ]
 
