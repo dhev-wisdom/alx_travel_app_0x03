@@ -15,12 +15,14 @@ import uuid
 class ListingViewSet(ModelViewSet):
     """view for the Listing model"""
     serializer_class = ListingSerializer
+    permission_classes = [permissions.AllowAny]
     queryset = Listing.objects.all()
 
 
 class BookingViewSet(ModelViewSet):
     """view for the Booking model"""
     serializer_class = BookingSerializer
+    permission_classes = [permissions.NOT]
     queryset = Booking.objects.all()
 
     def perform_create(self, serializer):
@@ -43,6 +45,7 @@ class ReviewViewSet(ModelViewSet):
 class PaymentViewSet(ModelViewSet):
     """view for the Review model"""
     serializer_class = PaymentSerializer
+    permission_classes = [permissions.NOT]
     queryset = Payment.objects.all()
 
 
