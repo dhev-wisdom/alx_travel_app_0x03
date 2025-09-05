@@ -34,7 +34,8 @@ CHAPA_BASE_URL = env('CHAPA_BASE_URL')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default="127.0.0.1")
+ALLOWED_HOSTS = ["alx-travel-app-499n.onrender.com", "127.0.0.1", "localhost", "0.0.0.0"]
+# ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default="127.0.0.1")
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -160,6 +161,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CELERY_BROKER_URL = env('REDIS_URL')
 # CELERY_BROKER_URL = "amqp://guest:guest@localhost:5672//"
 CELERY_RESULT_BACKEND = "rpc://"
 CELERY_TASK_SERIALIZER = "json"
