@@ -15,6 +15,7 @@ import environ
 import os
 import dj_database_url
 from kombu import Connection
+import ssl
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,6 +94,13 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default="postgresql://alx_travel_app:w428xslB95EhX7Sfknz3tTbUN441QGsf@dpg-d2rbm295pdvs739434mg-a.oregon-postgres.render.com/alx_travel_app",
+        conn_max_age=600
+    )
+}
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -110,14 +118,6 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 #         'PORT': env('DB_PORT'),
 #     }
 # }
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default=env('RENDER_POSTGRES'),
-        conn_max_age=600
-    )
-}
-
 
 
 # Password validation
@@ -167,7 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = env("REDIS_URL")
 
 if CELERY_BROKER_URL.startswith("rediss://"):
-    BROKER_USE_SSL = {"ssl_cert_reqs": 0}
+    BROKER_USE_SSL = {"ssl_cert_reqs": ssl.CERT_NONE}
 
 CELERY_RESULT_BACKEND = "rpc://"
 CELERY_TASK_SERIALIZER = "json"
