@@ -14,6 +14,8 @@ from pathlib import Path
 import environ
 import os
 import dj_database_url
+from kombu import Connection
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'listings',
+    'project_core',
 ]
 
 MIDDLEWARE = [
@@ -161,7 +164,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = env('REDIS_URL')
+CELERY_BROKER_URL = env("REDIS_URL")
+
+if CELERY_BROKER_URL.startswith("rediss://"):
+    BROKER_USE_SSL = {"ssl_cert_reqs": 0}
+
 CELERY_RESULT_BACKEND = "rpc://"
 CELERY_TASK_SERIALIZER = "json"
 CELERY_ACCEPT_CONTENT = ["json"]

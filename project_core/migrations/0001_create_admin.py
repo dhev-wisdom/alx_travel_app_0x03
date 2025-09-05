@@ -2,7 +2,7 @@ from django.db import migrations
 from django.contrib.auth.hashers import make_password
 
 def create_admin(apps, schema_editor):
-    User = apps.get_model('auth', 'User')
+    User = apps.get_model("auth", "User")
     if not User.objects.filter(username="admin").exists():
         User.objects.create(
             username="admin",
@@ -13,10 +13,10 @@ def create_admin(apps, schema_editor):
         )
 
 class Migration(migrations.Migration):
+    initial = True
 
     dependencies = [
-        ('listings', '0003_payment_payer_email_payment_payer_phone'),
-        ('auth', '0012_alter_user_first_name_max_length'),  # depends on your Django version
+        ("auth", "0012_alter_user_first_name_max_length"),  # depends on your Django version
     ]
 
     operations = [
