@@ -14,9 +14,9 @@ colorama==0.4.6
 dj-database-url==3.0.1
 Django==5.2.1
 django-cors-headers==4.7.0
+django-environ==0.12.0
 djangorestframework==3.16.0
 drf-yasg==1.21.10
-environ==1.0
 gunicorn==23.0.0
 h11==0.16.0
 honcho==2.0.0
