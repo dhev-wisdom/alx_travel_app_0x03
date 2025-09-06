@@ -22,7 +22,7 @@ class ListingViewSet(ModelViewSet):
 class BookingViewSet(ModelViewSet):
     """view for the Booking model"""
     serializer_class = BookingSerializer
-    permission_classes = [permissions.NOT]
+    permission_classes = [permissions.AllowAny]
     queryset = Booking.objects.all()
 
     def perform_create(self, serializer):
@@ -38,14 +38,14 @@ class BookingViewSet(ModelViewSet):
 class ReviewViewSet(ModelViewSet):
     """view for the Review model"""
     serializer_class = ReviewSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Review.objects.all()
 
 
 class PaymentViewSet(ModelViewSet):
     """view for the Review model"""
     serializer_class = PaymentSerializer
-    permission_classes = [permissions.NOT]
+    permission_classes = [permissions.AllowAny]
     queryset = Payment.objects.all()
 
 
