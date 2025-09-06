@@ -110,7 +110,7 @@ DATABASES = {
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',  # or 'django.db.backends.mysql'
+#         'ENGINE': 'django.db.backends.postgresql',  # or 'django.db.backends.mysql'
 #         'NAME': env('DB_NAME'),
 #         'USER': env('DB_USER'),
 #         'PASSWORD': env('DB_PASSWORD'),
@@ -137,6 +137,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny"
+    ]
+}
 
 
 # Internationalization
